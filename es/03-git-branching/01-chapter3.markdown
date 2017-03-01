@@ -19,18 +19,15 @@ Cuando creas una confirmación con el comando `git commit`, Git realiza sumas de
 
 En este momento, el repositorio de Git contendrá cinco objetos: un "blob" para cada uno de los tres archivos, un árbol con la lista de contenidos de la carpeta (más sus respectivas relaciones con los "blobs"), y una confirmación de cambios (commit) apuntando a la raiz de ese árbol y conteniendo el resto de metadatos pertinentes. Conceptualmente, el contenido del repositorio Git será algo parecido a la Figura 3-1
 
-Insert 18333fig0301.png 
-Figura 3-1. Datos en el repositorio tras una confirmación sencilla.
+![Figura 3-1. Datos en el repositorio tras una confirmación sencilla.](../figures/18333fig0301-tn.png)
 
 Si haces más cambios y vuelves a confirmar, la siguiente confirmación guardará un apuntador a esta su confirmación precedente. Tras un par de confirmaciones más, el registro ha de ser algo parecido a la Figura 3-2.
 
-Insert 18333fig0302.png 
-Figura 3-2. Datos en el repositorio tras una serie de confirmaciones.
+![Figura 3-2. Datos en el repositorio tras una serie de confirmaciones.](../figures/18333fig0302-tn.png)
 
 Una rama Git es simplemente un apuntador móvil apuntando a una de esas confirmaciones. La rama por defecto de Git es la rama `master`. Con la primera confirmación de cambios que realicemos, se creará esta rama principal `master` apuntando a dicha confirmación. En cada confirmación de cambios que realicemos, la rama irá avanzando automáticamente. Y la rama `master` apuntará siempre a la última confirmación realizada.
 
-Insert 18333fig0303.png 
-Figura 3-3. Apuntadores en el registro de confirmaciones de una rama.
+![Figura 3-3. Apuntadores en el registro de confirmaciones de una rama.](../figures/18333fig0303-tn.png)
 
 ¿Qué sucede cuando creas una nueva rama? Bueno..., simplemente se crea un nuevo apuntador para que lo puedas mover libremente. Por ejemplo, si quieres crear una nueva rama denominada "testing". Usarás el comando `git branch`:
 
@@ -38,13 +35,11 @@ Figura 3-3. Apuntadores en el registro de confirmaciones de una rama.
 
 Esto creará un nuevo apuntador apuntando a la misma confirmación donde estés actualmente (ver Figura 3-4).
 
-Insert 18333fig0304.png 
-Figura 3-4. Apuntadores de varias ramas en el registro de confirmaciones de cambio.
+![Figura 3-4. Apuntadores de varias ramas en el registro de confirmaciones de cambio.](../figures/18333fig0304-tn.png)
 
 Y, ¿cómo sabe Git en qué rama estás en este momento? Pues..., mediante un apuntador especial denominado HEAD. Aunque es preciso comentar que este HEAD es totalmente distinto al concepto de HEAD en otros sistemas de control de cambios como Subversion o CVS. En Git, es simplemente el apuntador a la rama local en la que tú estés en ese momento. En este caso, en la rama `master`. Puesto que el comando git branch solamente crea una nueva rama, y no salta a dicha rama.
 
-Insert 18333fig0305.png 
-Figura 3-5. Apuntador HEAD a la rama donde estás actualmente.
+![Figura 3-5. Apuntador HEAD a la rama donde estás actualmente.](../figures/18333fig0305-tn.png)
 
 Para saltar de una rama a otra, tienes que utilizar el comando `git checkout`. Hagamos una prueba, saltando a la rama `testing` recién creada:
 
@@ -52,8 +47,7 @@ Para saltar de una rama a otra, tienes que utilizar el comando `git checkout`. H
 
 Esto mueve el apuntador HEAD a la rama `testing` (ver Figura 3-6).
 
-Insert 18333fig0306.png
-Figura 3-6. Apuntador HEAD apuntando a otra rama cuando saltamos de rama.
+![Figura 3-6. Apuntador HEAD apuntando a otra rama cuando saltamos de rama.](../figures/18333fig0306-tn.png)
 
 ¿Cuál es el significado de todo esto?. Bueno... lo veremos tras realizar otra confirmación de cambios:
 
@@ -62,8 +56,7 @@ Figura 3-6. Apuntador HEAD apuntando a otra rama cuando saltamos de rama.
 
 La Figura 3-7 ilustra el resultado.
 
-Insert 18333fig0307.png 
-Figura 3-7. La rama apuntada por HEAD avanza con cada confirmación de cambios.
+![Figura 3-7. La rama apuntada por HEAD avanza con cada confirmación de cambios.](../figures/18333fig0307-tn.png)
 
 Observamos algo interesante: la rama `testing` avanza, mientras que la rama `master` permanece en la confirmación donde estaba cuando lanzaste el comando `git checkout` para saltar. Volvamos ahora a la rama `master`:
 
@@ -71,8 +64,7 @@ Observamos algo interesante: la rama `testing` avanza, mientras que la rama `mas
 
 La Figura 3-8 muestra el resultado.
 
-Insert 18333fig0308.png 
-Figura 3-8. HEAD apunta a otra rama cuando hacemos un checkout.
+![Figura 3-8. HEAD apunta a otra rama cuando hacemos un checkout.](../figures/18333fig0308-tn.png)
 
 Este comando realiza dos acciones: Mueve el apuntador HEAD de nuevo a la rama `master`, y revierte los archivos de tu directorio de trabajo; dejándolos tal y como estaban en la última instantánea confirmada en dicha rama `master`. Esto supone que los cambios que hagas desde este momento en adelante divergirán de la antigua versión del proyecto. Básicamente, lo que se está haciendo es rebobinar el trabajo que habías hecho temporalmente en la rama `testing`; de tal forma que puedas avanzar en otra dirección diferente.
 
@@ -83,8 +75,7 @@ Haz algunos cambios más y confirmalos:
 
 Ahora el registro de tu proyecto diverge (ver Figura 3-9). Has creado una rama y saltado a ella, has trabajado sobre ella; has vuelto a la rama original, y has trabajado también sobre ella. Los cambios realizados en ambas sesiones de trabajo están aislados en ramas independientes: puedes saltar libremente de una a otra según estimes oportuno. Y todo ello simplemente con dos comandos:  `git branch` y `git checkout`.
 
-Insert 18333fig0309.png 
-Figura 3-9. Los registros de las ramas divergen.
+![Figura 3-9. Los registros de las ramas divergen.](../figures/18333fig0309-tn.png)
 
 Debido a que una rama Git es realmente un simple archivo que contiene los 40 caracteres de una suma de control SHA-1, (representando la confirmación de cambios a la que apunta), no cuesta nada el crear y destruir ramas en Git. Crear una nueva rama es tan rápido y simple como escribir 41 bytes en un archivo, (40 caracteres y un retorno de carro).
 
@@ -111,8 +102,7 @@ En este momento, recibes una llamada avisándote de un problema crítico que has
 
 Imagina que estas trabajando en un proyecto, y tienes un par de confirmaciones (commit) ya realizadas. (ver Figura 3-10)
 
-Insert 18333fig0310.png 
-Figura 3-10. Un registro de confirmaciones simple y corto.
+![Figura 3-10. Un registro de confirmaciones simple y corto.](../figures/18333fig0310-tn.png)
 
 Decides trabajar el problema #53, del sistema que tu compañía utiliza para llevar seguimiento de los problemas. Aunque, por supuesto, Git no está ligado a ningún sistema de seguimiento de problemas concreto. Como el problema #53 es un tema concreto y puntual en el que vas a trabajar, creas una nueva rama para él. Para crear una nueva rama y saltar a ella, en un solo paso, puedes utilizar el comando `git checkout` con la opción `-b`:
 
@@ -126,16 +116,14 @@ Esto es un atajo a:
 
 Figura 3-11 muestra el resultado.
 
-Insert 18333fig0311.png 
-Figura 3-11. Creación de un apuntador a la nueva rama.
+![Figura 3-11. Creación de un apuntador a la nueva rama.](../figures/18333fig0311-tn.png)
 
 Trabajas en el sitio web y haces algunas confirmaciones de cambios (commits). Con ello avanzas la rama `iss53`, que es la que tienes activada (checked out) en este momento (es decir, a la que apunta HEAD; ver Figura 3-12):
 
 	$ vim index.html
 	$ git commit -a -m 'added a new footer [issue 53]'
 
-Insert 18333fig0312.png 
-Figura 3-12. La rama `iss53` ha avanzado con tu trabajo.
+![Figura 3-12. La rama `iss53` ha avanzado con tu trabajo.](../figures/18333fig0312-tn.png)
 
 Entonces, recibes una llamada avisándote de otro problema urgente en el sitio web. Problema que has de resolver inmediatamente. Usando Git, no necesitas mezclar el nuevo problema con los cambios que ya habías realizado sobre el problema #53; ni tampoco perder tiempo revirtiendo esos cambios para poder trabajar sobre el contenido que está en producción. Basta con saltar de nuevo a la rama `master` y continuar trabajando a partir de ella.
 
@@ -155,8 +143,7 @@ Volviendo al problema urgente. Vamos a crear una nueva rama `hotfix`, sobre la q
 	[hotfix]: created 3a0874c: "fixed the broken email address"
 	 1 files changed, 0 insertions(+), 1 deletions(-)
 
-Insert 18333fig0313.png 
-Figura 3-13. rama `hotfix` basada en la rama `master` original.
+![Figura 3-13. rama `hotfix` basada en la rama `master` original.](../figures/18333fig0313-tn.png)
 
 Puedes realizar las pruebas oportunas, asegurarte que la solución es correcta, e incorporar los cambios a la rama `master` para ponerlos en producción. Esto se hace con el comando `git merge`:
 
@@ -171,8 +158,7 @@ Merece destacar la frase "Avance rápido" ("Fast forward") que aparece en la res
 
 Ahora, los cambios realizados están ya en la instantánea (snapshot) de la confirmación (commit) apuntada por la rama `master`. Y puedes desplegarlos (ver Figura 3-14)
 
-Insert 18333fig0314.png 
-Figura 3-14. Tras la fusión (merge), la rama `master` apunta al mismo sitio que la rama `hotfix`.
+![Figura 3-14. Tras la fusión (merge), la rama `master` apunta al mismo sitio que la rama `hotfix`.](../figures/18333fig0314-tn.png)
 
 Tras haber resuelto el problema urgente que te había interrumpido tu trabajo, puedes volver a donde estabas. Pero antes, es interesante borrar la rama `hotfix`. Ya que no la vamos a necesitar más, puesto que apunta exactamente al mismo sitio que la rama `master`. Esto lo puedes hacer con la opción `-d` del comando `git branch`:
 
@@ -188,8 +174,7 @@ Y, con esto, ya estás dispuesto para regresar al trabajo sobre el problema #53 
 	[iss53]: created ad82d7a: "finished the new footer [issue 53]"
 	 1 files changed, 1 insertions(+), 0 deletions(-)
 
-Insert 18333fig0315.png 
-Figura 3-15. La rama `iss53` puede avanzar independientemente.
+![Figura 3-15. La rama `iss53` puede avanzar independientemente.](../figures/18333fig0315-tn.png)
 
 Cabe indicar que todo el trabajo realizado en la rama `hotfix` no está en los archivos de la rama `iss53`. Si fuera necesario agregarlos, puedes fusionar (merge) la rama `master` sobre la rama `iss53` utilizando el comando `git merge master`. O puedes esperar hasta que decidas llevar (pull) la rama `iss53` a la rama `master`.
 
@@ -205,15 +190,13 @@ Supongamos que tu trabajo con el problema #53 está ya completo y listo para fus
 
 Es algo diferente de la fusión realizada anteriormente con `hotfix`. En este caso, el registro de desarrollo había divergido en un punto anterior. Debido a que la confirmación en la rama actual no es ancestro directo de la rama que pretendes fusionar, Git tiene cierto trabajo extra que hacer. Git realizará una fusión a tres bandas, utilizando las dos instantáneas apuntadas por el extremo de cada una de las ramas y por el ancestro común a ambas dos. La figura 3-16 ilustra las tres instantáneas que Git utiliza para realizar la fusión en este caso.
 
-Insert 18333fig0316.png 
-Figura 3-16. Git identifica automáticamente el mejor ancestro común para realizar la fusión de las ramas.
+![Figura 3-16. Git identifica automáticamente el mejor ancestro común para realizar la fusión de las ramas.](../figures/18333fig0316-tn.png)
 
 En lugar de simplemente avanzar el apuntador de la rama, Git crea una nueva instantánea (snapshot) resultante de la fusión a tres bandas; y crea automáticamente una nueva confirmación de cambios (commit) que apunta a ella. Nos referimos a este proceso como "fusión confirmada". Y se diferencia en que tiene más de un padre.
 
 Merece la pena destacar el hecho de que es el propio Git quien determina automáticamente el mejor ancestro común para realizar la fusión. Diferenciandose de otros sistemas tales como CVS o Subversion, donde es el desarrollador quien ha de imaginarse cuál puede ser dicho mejor ancestro común. Esto hace que en Git sea mucho más fácil el realizar fusiones.
 
-Insert 18333fig0317.png 
-Figura 3-17. Git crea automáticamente una nueva confirmación para la fusión.
+![Figura 3-17. Git crea automáticamente una nueva confirmación para la fusión.](../figures/18333fig0317-tn.png)
 
 Ahora que todo tu trabajo está ya fusionado con la rama principal, ya no tienes necesidad de la rama `iss53`. Por lo que puedes borrarla. Y cerrar manualmente el problema en el sistema de seguimiento de problemas de tu empresa.
 
@@ -348,13 +331,11 @@ Muchos desarrolladores que usan Git llevan un flujo de trabajo de esta naturalez
 
 En realidad, en todo momento estamos hablando simplemente de apuntadores moviendose por la línea temporal de confirmaciones de cambio (commit history). Las ramas estables apuntan hacia posiciones más antiguas en el registro de confirmaciones. Mientras que las ramas avanzadas, las que van abriendo camino, apuntan hacia posiciones más recientes.
 
-Insert 18333fig0318.png 
-Figura 3-18. Las ramas más estables apuntan hacia posiciones más antiguas en el registro de cambios.
+![Figura 3-18. Las ramas más estables apuntan hacia posiciones más antiguas en el registro de cambios.](../figures/18333fig0318-tn.png)
 
 Podría ser más sencillo pensar en las ramas como si fueran silos de almacenamiento. Donde grupos de confirmaciones de cambio (commits) van promocionando hacia silos más estables a medida que son probados y depurados (ver Figura 3-19)
 
-Insert 18333fig0319.png 
-Figura 3-19. Puede ayudar pensar en las ramas como silos de almacenamiento.
+![Figura 3-19. Puede ayudar pensar en las ramas como silos de almacenamiento.](../figures/18333fig0319-tn.png)
 
 Este sistema de trabajo se puede ampliar para diversos grados de estabilidad. Algunos proyectos muy grandes suelen tener una rama denominada `propuestas` o `pu` (proposed updates). Donde suele estar todo aquello integrado desde otras ramas, pero que aún no está listo para ser incorporado a las ramas `siguiente` o `master`. La idea es mantener siempre diversas ramas en diversos grados de estabilidad; pero cuando alguna alcanza un estado más estable, la fusionamos con la rama inmediatamente superior a ella.
 Aunque no es obligatorio el trabajar con ramas de larga duración, realmente es práctico y útil. Sobre todo en proyectos largos o complejos.
@@ -367,13 +348,11 @@ Tal y como has visto con las ramas `iss53` y `hotfix` que has creado en la secci
 
 Por ejemplo, puedes realizar cierto trabajo en la rama `master`, ramificar para un problema concreto (rama `iss91`), trabajar en él un rato, ramificar a una segunda rama para probar otra manera de resolverlo (rama `iss92v2`), volver a la rama `master` y trabajar un poco más, y, por último, ramificar temporalmente para probar algo de lo que no estás seguro (rama `dumbidea`). El registro de confirmaciones (commit history) será algo parecido a la Figura 3-20.
 
-Insert 18333fig0320.png 
-Figura 3-20. El registro de confirmaciones con múltiples ramas puntuales.
+![Figura 3-20. El registro de confirmaciones con múltiples ramas puntuales.](../figures/18333fig0320-tn.png)
 
 En este momento, supongamos que te decides por la segunda solución al problema (rama `iss92v2`); y que, tras mostrar la rama `dumbidea` a tus compañeros, resulta que les parece una idea genial. Puedes descartar la rama `iss91` (perdiendo las confirmaciones C5 y C6), y fusionar las otras dos. El registro será algo parecido a la Figura 3-21.
 
-Insert 18333fig0321.png 
-Figura 3-21. El registro tras fusionar `dumbidea` e `iss91v2`.
+![Figura 3-21. El registro tras fusionar `dumbidea` e `iss91v2`.](../figures/18333fig0321-tn.png)
 
 Es importante recordar que, mientras estás haciendo todo esto, todas las ramas son completamente locales. Cuando ramificas y fusionas, todo se realiza en tu propio repositorio Git. No hay nigún tipo de tráfico con ningún servidor.
 
@@ -385,28 +364,23 @@ Suelen referenciarse como `(remoto)/(rama)`. Por ejemplo, si quieres saber cómo
 
 Esto puede ser un tanto confuso, pero intentemos aclararlo con un ejemplo.  Supongamos que tienes un sevidor Git en tu red, en `git.ourcompany.com`. Si haces un clón desde ahí, Git automáticamente lo denominará `origin`, traerá (pull) sus datos, creará un apuntador hacia donde esté en ese momento su rama `master`, denominará la copia local `origin/master`; y será inamovible para ti.  Git te proporcionará también tu propia rama `master`, apuntando al mismo lugar que la rama `master` de `origin`; siendo en esta última donde podrás trabajar.
 
-Insert 18333fig0322.png 
-Figura 3-22. Un clón Git te proporciona tu propia rama `master` y otra rama `origin/master` apuntando a la rama `master` original.
+![Figura 3-22. Un clón Git te proporciona tu propia rama `master` y otra rama `origin/master` apuntando a la rama `master` original.](../figures/18333fig0322-tn.png)
 
 Si haces algún trabajo en tu rama `master` local, y al mismo tiempo, alguna otra persona lleva (push) su trabajo al servidor `git.ourcompany.com`, actualizando la rama `master` de allí, te encontrarás con que ambos registros avanzan de forma diferente. Además, mientras no tengas contacto con el servidor, tu apuntador a tu rama `origin/master` no se moverá (ver Figura 3/23).
 
-Insert 18333fig0323.png 
-Figura 3-23. Trabajando localmente y que otra persona esté llevando (push) algo al servidor remoto, hace que cada registro avance de forma distinta.
+![Figura 3-23. Trabajando localmente y que otra persona esté llevando (push) algo al servidor remoto, hace que cada registro avance de forma distinta.](../figures/18333fig0323-tn.png)
 
 Para sincronizarte, puedes utilizar el comando `git fetch origin`. Este comando localiza en qué servidor está el origen (en este caso `git.ourcompany.com`), recupera cualquier dato presente allí que tu no tengas, y actualiza tu base de datos local, moviendo tu rama `origin/master` para que apunte a esta nueva y más reciente posición (ver Figura 3-24).
 
-Insert 18333fig0324.png 
-Figura 3-24. El comando `git fetch` actualiza tus referencias remotas.
+![Figura 3-24. El comando `git fetch` actualiza tus referencias remotas.](../figures/18333fig0324-tn.png)
 
 Para ilustrar mejor el caso de tener múltiples servidores y cómo van las ramas remotas para esos proyectos remotos. Supongamos que tienes otro servidor Git; utilizado solamente para desarrollo, por uno de tus equipos sprint. Un servidor en `git.team1.ourcompany.com`. Puedes incluirlo como una nueva referencia remota a tu proyecto actual, mediante el comando `git remote add`, tal y como vimos en el capítulo 2. Puedes denominar `teamone` a este remoto, poniendo este nombre abreviado para la URL (ver Figura 3-25)
 
-Insert 18333fig0325.png 
-Figura 3-25. Añadiendo otro servidor como remoto.
+![Figura 3-25. Añadiendo otro servidor como remoto.](../figures/18333fig0325-tn.png)
 
 Ahora, puedes usar el comando `git fetch teamone` para recuperar todo el contenido del servidor que tu no tenias. Debido a que dicho servidor es un subconjunto de de los datos del servidor `origin` que tienes actualmente, Git no recupera (fetch) ningún  dato; simplemente prepara una rama remota llamada `teamone/master` para apuntar a la confirmación (commit) que `teamone` tiene en su rama `master`.
 
-Insert 18333fig0326.png 
-Figura 3-26. Obtienes una referencia local a la posición en la rama `master` de `teamone`.
+![Figura 3-26. Obtienes una referencia local a la posición en la rama `master` de `teamone`.](../figures/18333fig0326-tn.png)
 
 ### Publicando ###
 
@@ -480,13 +454,11 @@ En Git tenemos dos formas de integrar cambios de una rama en otra: la fusión (m
 
 Volviendo al ejemplo anterior, en la sección sobre fusiones (ver Figura 3-27), puedes ver que has separado  tu trabajo y realizado confirmaciones (commit) en dos ramas diferentes.
 
-Insert 18333fig0327.png 
-Figura 3-27. El registro de confirmaciones inicial.
+![Figura 3-27. El registro de confirmaciones inicial.](../figures/18333fig0327-tn.png)
 
 La manera más sencilla de integrar ramas, tal y como hemos visto, es el comando `git merge`. Realiza una fusión a tres bandas entre las dos últimas instantáneas de cada rama (C3 y C4) y el ancestro común a ambas (C2); creando una nueva instantánea (snapshot)  y la correspondiente confirmación (commit), según se muestra en la Figura 3-28.
 
-Insert 18333fig0328.png 
-Figura 3-28. Fusionando una rama para integrar el registro de trabajos divergentes.
+![Figura 3-28. Fusionando una rama para integrar el registro de trabajos divergentes.](../figures/18333fig0328-tn.png)
 
 Aunque también hay otra forma de hacerlo: puedes coger los cambios introducidos en C3 y reaplicarlos encima de C4. Esto es lo que en Git llamamos _reorganizar_. Con el comando `git rebase`, puedes coger todos los cambios confirmados en una rama, y reaplicarlos sobre otra.
 
@@ -499,13 +471,11 @@ Por ejemplo, puedes lanzar los comandos:
 
 Haciendo que Git: vaya al ancestro común de ambas ramas (donde estás actualmente y de donde quieres reorganizar), saque las diferencias introducidas por cada confirmación en la rama donde estás, guarde esas diferencias en archivos temporales, reinicie (reset) la rama actual hasta llevarla a la misma confirmación en la rama de donde quieres reorganizar, y, finalmente, vuelva a aplicar ordenadamente los cambios. El proceso se muestra en la Figura 3-29.
 
-Insert 18333fig0329.png 
-Figura 3-29. Reorganizando sobre C4 los cambios introducidos en C3.
+![Figura 3-29. Reorganizando sobre C4 los cambios introducidos en C3.](../figures/18333fig0329-tn.png)
 
 En este momento, puedes volver a la rama `master` y hacer una fusión con avance rápido (fast-forward merge). (ver Figura 3-30)
 
-Insert 18333fig0330.png 
-Figura 3-30. Avance rápido de la rama `master`.
+![Figura 3-30. Avance rápido de la rama `master`.](../figures/18333fig0330-tn.png)
 
 Así, la instantánea apuntada por C3' aquí es exactamente la misma apuntada por C5 en el ejemplo de la fusión. No hay ninguna diferencia en el resultado final de la integración, pero el haberla hecho reorganizando nos deja un registro más claro. Si examinas el registro de una rama reorganizada, este aparece siempre como un registro lineal: como si todo el trabajo se hubiera realizado en series, aunque realmente se haya hecho en paralelo.
 
@@ -517,8 +487,7 @@ Cabe destacar que la instantánea (snapshot) apuntada por la confirmación (comm
 
 También puedes aplicar una reorganización (rebase) sobre otra cosa además de sobre la rama de reorganización. Por ejemplo, sea un registro como el de la Figura 3-31. Has ramificado a una rama puntual (`server`) para añadir algunas funcionalidades al proyecto, y luego has confirmado los cambios. Después, vuelves a la rama original para hacer algunos cambios en la parte cliente (rama `client`), y confirmas también esos cambios. Por último, vuelves sobre la rama `server` y haces algunos cambios más.
 
-Insert 18333fig0331.png 
-Figura 3-31. Un registro con una rama puntual sobre otra rama puntual.
+![Figura 3-31. Un registro con una rama puntual sobre otra rama puntual.](../figures/18333fig0331-tn.png)
 
 Imagina que decides incorporar tus cambios de la parte cliente sobre el proyecto principal, para hacer un lanzamiento de versión; pero no quieres lanzar aún los cambios de la parte server porque no están aún suficientemente probados. Puedes coger los cambios del cliente que no están en server (C8 y C9), y reaplicarlos sobre tu rama principal usando la opción `--onto` del comando `git rebase`:
 
@@ -526,16 +495,14 @@ Imagina que decides incorporar tus cambios de la parte cliente sobre el proyecto
 
 Esto viene a decir: "Activa la rama `client`, averigua los cambios desde el ancestro común entre las ramas `client` y `server`, y aplicarlos en la rama `master`. Puede parecer un poco complicado, pero los resultados, mostrados en la Figura 3-32, son realmente interesantes.
 
-Insert 18333fig0332.png 
-Figura 3-32. Reorganizando una rama puntual fuera de otra rama puntual.
+![Figura 3-32. Reorganizando una rama puntual fuera de otra rama puntual.](../figures/18333fig0332-tn.png)
 
 Y, tras esto, ya puedes avanzar la rama principal (ver Figura 3-33):
 
 	$ git checkout master
 	$ git merge client
 
-Insert 18333fig0333.png 
-Figura 3-33. Avance rápido de tu rama `master`, para incluir los cambios de la rama `client`.
+![Figura 3-33. Avance rápido de tu rama `master`, para incluir los cambios de la rama `client`.](../figures/18333fig0333-tn.png)
 
 Ahora supongamos que decides traerlos (pull) también sobre tu rama `server`. Puedes reorganizar (rebase) la rama `server` sobre la rama `master` sin necesidad siquiera de comprobarlo previamente, usando el comando `git rebase [ramabase] [ramapuntual]`. El cual activa la rama puntual (`server` en este caso) y la aplica sobre la rama base (`master` en este caso):
 
@@ -543,8 +510,7 @@ Ahora supongamos que decides traerlos (pull) también sobre tu rama `server`. Pu
 
 Esto vuelca el trabajo de `server` sobre el de `master`, tal y como se muestra en la Figura 3-34.
 
-Insert 18333fig0334.png 
-Figura 3-34. Reorganizando la rama `server` sobre la rama `branch`.
+![Figura 3-34. Reorganizando la rama `server` sobre la rama `branch`.](../figures/18333fig0334-tn.png)
 
 Después, puedes avanzar rápidamente la rama base (`master`):
 
@@ -556,8 +522,7 @@ Y por último puedes eliminar las ramas `client` y `server` porque ya todo su co
 	$ git branch -d client
 	$ git branch -d server
 
-Insert 18333fig0335.png 
-Figura 3-35. Registro final de confirmaciones de cambio.
+![Figura 3-35. Registro final de confirmaciones de cambio.](../figures/18333fig0335-tn.png)
 
 ### Los peligros de la reorganización ###
 
@@ -571,23 +536,19 @@ Cuando reorganizas algo, estás abandonando las confirmaciones de cambio ya crea
 
 Vamos a verlo con un ejemplo. Imagínate que haces un clon desde un servidor central, y luego trabajas sobre él. Tu registro de cambios puede ser algo como lo de la Figura 3-36.
 
-Insert 18333fig0336.png 
-Figura 3-36. Clonar un repositorio y trabajar sobre él.
+![Figura 3-36. Clonar un repositorio y trabajar sobre él.](../figures/18333fig0336-tn.png)
 
 Ahora, otra persona trabaja también sobre ello, realiza una fusión (merge) y lleva (push) su trabajo al servidor central. Tu te traes (fetch) sus trabajos y los fusionas (merge) sobre una nueva rama en tu trabajo. Quedando tu registro de confirmaciones como en la Figura 3-37.
 
-Insert 18333fig0337.png 
-Figura 3-37. Traer (fetch) algunas confirmaciones de cambio (commits) y fusionarlas (merge) sobre tu trabajo.
+![Figura 3-37. Traer (fetch) algunas confirmaciones de cambio (commits) y fusionarlas (merge) sobre tu trabajo.](../figures/18333fig0337-tn.png)
 
 A continuación, la persona que había llevado cambios al servidor central decide retroceder y reorganizar su trabajo; haciendo un `git push --force` para sobrescribir el registro en el servidor. Tu te traes (fetch) esos nuevos cambios desde el servidor.
 
-Insert 18333fig0338.png 
-Figura 3-38. Alguien envií (push) confirmaciones (commits) reorganizadas, abandonando las confirmaciones en las que tu habías basado tu trabajo.
+![Figura 3-38. Alguien envií (push) confirmaciones (commits) reorganizadas, abandonando las confirmaciones en las que tu habías basado tu trabajo.](../figures/18333fig0338-tn.png)
 
 En ese momento, tu te ves obligado a fusionar (merge) tu trabajo de nuevo, aunque creias que ya lo habias hecho antes. La reorganización cambia los resumenes (hash) SHA-1 de esas confirmaciones (commits), haciendo que Git se crea que son nuevas confirmaciones. Cuando realmente tu ya tenias el trabajo de C4 en tu registro.
 
-Insert 18333fig0339.png 
-Figura 3-39. Vuelves a fusionar el mismo trabajo en una nueva fusión confirmada.
+![Figura 3-39. Vuelves a fusionar el mismo trabajo en una nueva fusión confirmada.](../figures/18333fig0339-tn.png)
 
 Te ves obligado a fusionar (merge) ese trabajo en algún punto, para poder seguir adelante con otros desarrollos en el futuro. Tras todo esto, tu registro de confirmaciones de cambio (commit history) contendrá tanto la confirmación C4 como la C4'; teniendo ambas el mismo contenido y el mismo mensaje de confirmación. Si lanzas un `git log` en un registro como este, verás dos confirmaciones  con el mismo autor, misma fecha y mismo mensaje. Lo que puede llevar a confusiones. Es más, si luego tu envías (push) ese registro de vuelta al servidor, vas a introducir todas esas confirmaciones reorganizadas en el servidor central. Lo que puede confundir aún más a la gente.
 

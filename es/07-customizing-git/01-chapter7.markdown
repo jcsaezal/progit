@@ -187,8 +187,7 @@ Tras ajustar todo esto, si lanzas comandos tales como:  $ git diff 32d1776b1 ^ 3
 
 En lugar de mostrar las diferencias por línea de comandos, Git lanzará P4Merge, que tiene una pinta como la de la Figura 7-1.
 
-Insert 18333fig0701.png 
-Figura 7-1. P4Merge.
+![Figura 7-1. P4Merge.](../figures/18333fig0701-tn.png)
 
 Si intentas fusionar (merge) dos ramas y tienes los consabidos conflictos de integración, puedes lanzar el comando 'git mergetool'; lanzará P4Merge para ayudarte a resolver los conflictos por medio de su interfaz gráfica.
 
@@ -389,11 +388,9 @@ Pero esto tiene un uso bastante limitado. Si has utilizado alguna vez las sustit
 
 Auque resulta que también puedes escribir tus propios filtros para realizar sustituciones en los archivos al guardar o recuperar (commit/checkout). Esos son los filtros "clean" y "smudge". En el archivo '.gitattibutes', puedes indicar filtros para carpetas o archivos determinados y luego preparar tus propios scripts para procesarlos justo antes de confirmar cambios en ellos ("clean", ver Figura 7-2), o justo antes de recuperarlos ("smudge", ver Figura 7-3). Estos filtros pueden utilizarse para realizar todo tipo de acciones útiles.
 
-Insert 18333fig0702.png 
-Figura 7-2. El filtro "smudge" se usa al extraer (checkout).
+![Figura 7-2. El filtro "smudge" se usa al extraer (checkout).](../figures/18333fig0702-tn.png)
 
-Insert 18333fig0703.png 
-Figura 7-3. El filtro "clean" se usa al almacenar (staged).
+![Figura 7-3. El filtro "clean" se usa al almacenar (staged).](../figures/18333fig0703-tn.png)
 
 El mensaje de confirmación para esta funcionalidad nos da un ejemplo simple: el de pasar todo tu código fuente C por el programa'indent' antes de almacenarlo. Puedes hacerlo poniendo los atributos adecuados en tu archivo '.gitattributes', para filtrar los archivos `*.c` a través de "indent":
 

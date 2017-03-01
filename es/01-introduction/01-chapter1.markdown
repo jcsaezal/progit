@@ -14,8 +14,7 @@ Un método de control de versiones usado por mucha gente es copiar los archivos 
 
 Para hacer frente a este problema, los programadores desarrollaron hace tiempo VCSs locales que contenían una simple base de datos en la que se llevaba registro de todos los cambios realizados sobre los archivos (véase Figura 1-1).
 
-Insert 18333fig0101.png
-Figura 1-1. Diagrama de control de versiones local.
+![Figura 1-1. Diagrama de control de versiones local.](../figures/18333fig0101-tn.png)
 
 Una de las herramientas de control de versiones más popular fue un sistema llamado rcs, que todavía podemos encontrar en muchos de los ordenadores actuales. Hasta el famoso sistema operativo Mac OS X incluye el comando rcs cuando instalas las herramientas de desarrollo. Esta herramienta funciona básicamente guardando conjuntos de parches (es decir, las diferencias entre archivos) de una versión a otra en un formato especial en disco; puede entonces recrear cómo era un archivo en cualquier momento sumando los distintos parches.
 
@@ -23,8 +22,7 @@ Una de las herramientas de control de versiones más popular fue un sistema llam
 
 El siguiente gran problema que se encuentra la gente es que necesitan colaborar con desarrolladores en otros sistemas. Para solventar este problema, se desarrollaron los sistemas de control de versiones centralizados (Centralized Version Control Systems o CVCSs en inglés). Estos sistemas, como CVS, Subversion, y Perforce, tienen un único servidor que contiene todos los archivos versionados, y varios clientes que descargan los archivos desde ese lugar central. Durante muchos años éste ha sido el estándar para el control de versiones (véase Figura 1-2).
 
-Insert 18333fig0102.png
-Figura 1-2. Diagrama de control de versiones centralizado.
+![Figura 1-2. Diagrama de control de versiones centralizado.](../figures/18333fig0102-tn.png)
 
 Esta configuración ofrece muchas ventajas, especialmente frente a VCSs locales. Por ejemplo, todo el mundo puede saber (hasta cierto punto) en qué están trabajando los otros colaboradores del proyecto. Los administradores tienen control detallado de qué puede hacer cada uno; y es mucho más fácil administrar un CVCS que tener que lidiar con bases de datos locales en cada cliente.
 
@@ -34,8 +32,7 @@ Sin embargo, esta configuración también tiene serias desventajas. La más obvi
 
 Es aquí donde entran los sistemas de control de versiones distribuidos (Distributed Version Control Systems o DVCSs en inglés). En un DVCS (como Git, Mercurial, Bazaar o Darcs), los clientes no sólo descargan la última instantánea de los archivos: replican completamente el repositorio. Así, si un servidor muere, y estos sistemas estaban colaborando a través de él, cualquiera de los repositorios de los clientes puede copiarse en el servidor para restaurarlo. Cada vez que se descarga una instantánea, en realidad se hace una copia de seguridad completa de todos los datos (véase Figura 1-3).
 
-Insert 18333fig0103.png
-Figura 1-3. Diagrama de control de versiones distribuido.
+![Figura 1-3. Diagrama de control de versiones distribuido.](../figures/18333fig0103-tn.png)
 
 Es más, muchos de estos sistemas se las arreglan bastante bien teniendo varios repositorios con los que trabajar, por lo que puedes colaborar con distintos grupos de gente simultáneamente dentro del mismo proyecto. Esto te permite establecer varios flujos de trabajo que no son posibles en sistemas centralizados, como pueden ser los modelos jerárquicos.
 
@@ -61,13 +58,11 @@ Entonces, ¿qué es Git en pocas palabras? Es muy importante asimilar esta secci
 
 La principal diferencia entre Git y cualquier otro VCS (Subversion y compañía incluidos) es cómo Git modela sus datos. Conceptualmente, la mayoría de los demás sistemas almacenan la información como una lista de cambios en los archivos. Estos sistemas (CVS, Subversion, Perforce, Bazaar, etc.) modelan la información que almacenan como un conjunto de archivos y las modificaciones hechas sobre cada uno de ellos a lo largo del tiempo, como ilustra la Figura 1-4.
 
-Insert 18333fig0104.png
-Figura 1-4. Otros sistemas tienden a almacenar los datos como cambios de cada archivo respecto a una versión base.
+![Figura 1-4. Otros sistemas tienden a almacenar los datos como cambios de cada archivo respecto a una versión base.](../figures/18333fig0104-tn.png)
 
 Git no modela ni almacena sus datos de este modo. En cambio, Git modela sus datos más como un conjunto de instantáneas de un mini sistema de archivos. Cada vez que confirmas un cambio, o guardas el estado de tu proyecto en Git, él básicamente hace una foto del aspecto de todos tus archivos en ese momento, y guarda una referencia a esa instantánea. Para ser eficiente, si los archivos no se han modificado, Git no almacena el archivo de nuevo, sólo un enlace al archivo anterior idéntico que ya tiene almacenado. Git modela sus datos más como en la Figura 1-5.
 
-Insert 18333fig0105.png
-Figura 1-5. Git almacena la información como instantáneas del proyecto a lo largo del tiempo.
+![Figura 1-5. Git almacena la información como instantáneas del proyecto a lo largo del tiempo.](../figures/18333fig0105-tn.png)
 
 Esta es una distinción importante entre Git y prácticamente todos los demás VCSs. Hace que Git reconsidere casi todos los aspectos del control de versiones que muchos de los demás sistemas copiaron de la generación anterior. Esto hace que Git se parezca más a un mini sistema de archivos con algunas herramientas tremendamente potentes construidas sobre él, que a un VCS. Exploraremos algunos de los beneficios que obtienes al modelar tus datos de esta manera cuando veamos ramificaciones (branching) en Git en el Capítulo 3.
 
@@ -101,8 +96,7 @@ Ahora presta atención. Esto es lo más importante a recordar acerca de Git si q
 
 Esto nos lleva a las tres secciones principales de un proyecto de Git: el directorio de Git (Git directory), el directorio de trabajo (working directory), y el área de preparación (staging area).
 
-Insert 18333fig0106.png
-Figura 1-6. Directorio de trabajo, área de preparación y directorio de Git.
+![Figura 1-6. Directorio de trabajo, área de preparación y directorio de Git.](../figures/18333fig0106-tn.png)
 
 El directorio de Git es donde Git almacena los metadatos y la base de datos de objetos para tu proyecto. Es la parte más importante de Git, y es lo que se copia cuando clonas un repositorio desde otro ordenador.
 
@@ -165,8 +159,7 @@ Hay tres maneras fáciles de instalar Git en un Mac. La más sencilla es usar el
 
 	http://sourceforge.net/projects/git-osx-installer/
 
-Insert 18333fig0107.png
-Figura 1-7. Instalador de Git para OS X.
+![Figura 1-7. Instalador de Git para OS X.](../figures/18333fig0107-tn.png)
 
 Una alternativa es instalar Git a través de MacPorts (`http://www.macports.org`). Si tienes MacPorts instalado, instala Git con:
 

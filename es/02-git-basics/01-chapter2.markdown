@@ -46,8 +46,7 @@ Recuerda que cada archivo de tu directorio de trabajo puede estar en uno de esto
 
 A medida que editas archivos, Git los ve como modificados, porque los has cambiado desde tu última confirmación. Preparas estos archivos modificados y luego confirmas todos los cambios que hayas preparado, y el ciclo se repite. Este proceso queda ilustrado en la Figura 2-1.
 
-Insert 18333fig0201.png
-Figura 2-1. El ciclo de vida del estado de tus archivos.
+![Figura 2-1. El ciclo de vida del estado de tus archivos.](../figures/18333fig0201-tn.png)
 
 ### Comprobando el estado de tus archivos ###
 
@@ -659,8 +658,7 @@ De las casi 20.000 confirmaciones en la historia del código fuente de Git, este
 
 Si deseas utilizar una herramienta más gráfica para visualizar el histórico de confirmaciones, puede que quieras echarle un ojo a un programa Tcl/Tk llamado gitk que se distribuye junto con Git. Gitk es básicamente un `git log` visual, y acepta casi todas las opciones de filtrado que acepta `git log`. Si tecleas `gitk` en la línea de comandos dentro de tu proyecto, deberías ver algo como lo de la Figura 2-2.
 
-Insert 18333fig0202.png
-Figura 2-2. El visualizador de histórico gitk.
+![Figura 2-2. El visualizador de histórico gitk.](../figures/18333fig0202-tn.png)
 
 Puedes ver el histórico de confirmaciones en la mitad superior de la ventana, junto con un gráfico de ascendencia. El visor de diferencias de la mitad inferior muestra las modificaciones introducidas en cada confirmación que selecciones.
 

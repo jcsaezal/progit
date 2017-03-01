@@ -190,8 +190,7 @@ Una vez vistas las formas de referirse a confirmaciones concretas de cambios. Va
 
 La especificación de rango más común es la sintaxis doble-punto. Básicamente, se trata de pedir a Git que resuelva un rango de confirmaciones de cambio alcanzables desde una confirmación determinada, pero no desde otra. Por ejemplo, teniendo un historial de confirmaciones de cambio tal como el de la figura 6-1.
 
-Insert 18333fig0601.png 
-Figura 6-1. Ejemplo de historial para selección de rangos.
+![Figura 6-1. Ejemplo de historial para selección de rangos.](../figures/18333fig0601-tn.png)
 
 Si se desea ver qué partes de la rama experiment están sin fusionar aún con la rama master. Se puede pedir a Git que muestre un registro con las confirmaciones de cambio en `master..experiment`. Es decir, "todas las confirmaciones de cambio alcanzables desde experiment que no se pueden alcanzar desde master". Por razones de brevedad y claridad en los ejemplos, para representar los objetos confirmación de cambios (commit) se utilizarán las letras mostradas en el diagrama en lugar de todo el registro propiamente dicho: 
 
